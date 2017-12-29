@@ -25,14 +25,22 @@ class App extends Component {
     // that feels a little safer...
   };
 
+  // createContact(contact) {
+  //   ContactsAPI.create(contact).then(contact => {
+  //     this.setState(state => {
+  //       {
+  //         contacts: state.contacts.concat([contact]);
+  //       }
+  //     });
+  //   });
+  // }
+
   createContact(contact) {
     ContactsAPI.create(contact).then(contact => {
-      this.setState(state => {
-        {
-          contacts: state.contacts.concat([contact]);
-        }
-      });
-    });
+      this.setState(state => ({
+        contacts: state.contacts.concat([ contact ])
+      }))
+    })
   }
 
   render() {
@@ -48,6 +56,7 @@ class App extends Component {
           render={({history}) => (
             <CreateContact
               onCreateContact={contact => {
+                
                 this.createContact(contact);
                 history.push('/');
               }}

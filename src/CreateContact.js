@@ -4,11 +4,10 @@ import ImageInput from './ImageInput';
 import serializeForm from 'form-serialize';
 
 class CreateContact extends React.Component {
-  handleSubmit(e){
+  handleSubmit = (e)=> {
     e.preventDefault();
     
-    const contact = serializeForm(e.target, {hash:true});
-    console.log(this);
+    const contact = serializeForm(e.target, {hash:true});    
     this.props.onCreateContact(contact);
   }
   render() {
